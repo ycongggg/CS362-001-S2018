@@ -1,0 +1,100 @@
+Program Description
+◦ Provide details of the Calendar application (what the program is supposed to do), what does each class do?. Provide the source line of code (SLOC), number of the public and private (if any) methods of each class.
+
+◦ What are the pre-conditions and post-conditions, and what does each method do for the following methods?
+Appt class: (10 points) 
+• public Appt(...) # the constructor of the class Appt. 
+Pre-conditions: 
+Each of startHour, startMinute, startDay, startYear, startMonth, title, description, emailAddress isn’t equal to null and is valid
+
+Post-conditions: A new appointment is set
+
+• setValid(....) # the public method 
+Pre-conditions:
+0<=startHour<=23
+0<=startMinute<=59
+1<=startDay<=NumDaysInMonth
+startYear>0
+0<startMonth<=12
+
+Post-conditions:
+The appointment is marked valid
+
+
+• setRecurrence(...)# the public method 
+Pre-conditions:
+Each of recurDays, recurBy, recurIncrement, recurNumber is not empty and is valid
+Post-conditions:
+Recurrence is set
+
+
+• setRecurDays(...) # the private method 
+Pre-conditions: recurDays !== null
+Post-conditions: A valid recurDays is set
+
+
+▪ CalDay class: (10 points) 
+• public CalDay(...) # the constructor of the class CalDay. 
+Pre-conditions:
+0<day<=DAY_OF_MONTH
+0<=month<12
+0<year
+Post-conditions:
+A new CalDay is create for appointments to be added to it
+
+
+• AddAppt(...) # the public method 
+Pre-conditions:
+((Appt)getAppts().get(i)).getStartHour() >appt.getStartHour()
+
+Post-conditions: a new appointment is added to a calendar day
+
+
+▪ class CalendarUtil: (5 points) 
+• IsLeapYear((...) # the public method 
+Pre-conditions: int year > 0
+Post-conditions: return true if year%100 == 0(is leap year), return false if year%100 !== 0(isn’t leap year)
+
+
+▪ class DataHandler : (20 points) 
+• getApptRange(...) # the public method 
+Pre-conditions: 
+Post-conditions: 
+
+
+• getApptOccurences(...) # the private method 
+Pre-conditions: appointments occur between firstDay (inclusive) and
+      lastDay (exclusive)
+
+Post-conditions: given appointments are constructed to a linked list of 
+      GregorianCalendar's
+
+
+
+• getNextApptOccurrence(...) # the private method 
+Pre-conditions: the appointment recurs and the date can be calculated
+Post-conditions: the next recurring day in the given appointment will be returned
+
+
+• saveAppt(...) #the public method 
+Pre-conditions: the appointment is valid
+Post-conditions: an appointment's information is saved to the XML data tree
+Bug description
+CalDay.java:
+Line 57-59: static variable should be qualified by type name instead of by expression
+Line 199: missing type arguments for generic class
+
+CalendarMain.java:
+Line 40: static variable should be qualified by type name instead of by expression
+Line 153: static variable should be qualified by type name instead of by expression
+
+DataHandler.java:
+Line 152: static variable should be qualified by type name instead of by expression
+Line 206-213, 216, 222, 225-227, 259, 491: redundant cast. I will remove them. It can slow the runtime.
+Line 246: missing type arguments for generic class
+Line 256: static variable should be qualified by type name instead of by expression
+Line348: static variable should be qualified by type name instead of by expression
+Line 355-356, 374, 379: static variable should be qualified by type name instead of by expression
+
+DateOutOfRangeException.java:
+Line 8: class has no definition of serialVersionUID
